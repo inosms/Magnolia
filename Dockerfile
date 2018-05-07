@@ -7,7 +7,7 @@ RUN apt-get install -y libsndfile1 && \
 
 EXPOSE 5000
 RUN pip install --upgrade matplotlib --ignore-installed && pip install https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.1.0-cp35-cp35m-linux_x86_64.whl
-RUN pip install --upgrade scipy --ignore-installed
+RUN pip install --upgrade scipy
 
 ADD . /magnoliaWork
 WORKDIR /magnoliaWork
