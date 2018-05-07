@@ -6,15 +6,15 @@ RUN apt-get install -y libsndfile1 && \
     pip install h5py
 
 EXPOSE 5000
-RUN pip install --upgrade matplotlib && pip install https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.1.0-cp35-cp35m-linux_x86_64.whl
-RUN pip install --upgrade scipy
+RUN pip install --upgrade matplotlib --ignore-installed && pip install https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.1.0-cp35-cp35m-linux_x86_64.whl
+RUN pip install --upgrade scipy --ignore-installed
 
 ADD . /magnoliaWork
 WORKDIR /magnoliaWork
 RUN pip install .
 WORKDIR /magnoliaWork/src/demo
 
-RUN mkdir /magnoliaWork/src/demo/app/static/models && \
+RUN mkdir -p /magnoliaWork/src/demo/app/static/models && \
     echo "Now getting Deep Clustering code" && \
     wget "https://www.dropbox.com/s/01f1jrss5leqarq/deep_clustering.ckpt.data-00000-of-00001?dl=0" -O \
          /magnoliaWork/src/demo/app/static/models/deep_clustering.ckpt.data-00000-of-00001 && \
